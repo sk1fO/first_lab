@@ -20,10 +20,32 @@ void calculateAndDisplayRectangleProperties() {
     cout << "Длина диагонали прямоугольника: " << diagonal << endl;
 }
 
+void calculateAndDisplayTriangleProperties() {
+    double a, b, c, perimeter, s, area;
+
+    cout << "Введите длины сторон треугольника (a, b, c): ";
+    cin >> a >> b >> c;
+
+    perimeter = a + b + c;
+    s = perimeter / 2; // Полупериметр
+    area = sqrt(s * (s - a) * (s - b) * (s - c)); // Формула Герона
+
+    cout << "Периметр треугольника: " << perimeter << endl;
+    cout << "Площадь треугольника: " << area << endl;
+
+    // Проверка на равнобедренность
+    if (a == b || b == c || a == c) {
+        cout << "Треугольник является равнобедренным.\n";
+    } else {
+        cout << "Треугольник не является равнобедренным.\n";
+    }
+}
+
 void displayMenu() {
     cout << "Выберите действие:\n";
     cout << "1. Вычислить свойства прямоугольника\n";
-    cout << "2. Выход\n";
+    cout << "2. Вычислить свойства треугольника\n";
+    cout << "3. Выход\n";
 }
 
 int main() {
@@ -39,6 +61,10 @@ int main() {
                 break;
 
             case 2:
+                calculateAndDisplayTriangleProperties();
+                break;
+
+            case 3:
                 cout << "Выход из программы.\n";
                 break;
 
@@ -47,7 +73,7 @@ int main() {
                 break;
         }
 
-    } while (choice != 2);
+    } while (choice != 3);
 
     return 0;
 }
